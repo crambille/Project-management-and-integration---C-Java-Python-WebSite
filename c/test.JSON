@@ -1,0 +1,47 @@
+[
+    {
+        "id": 171,
+        "coord": {
+            "lat": 42.6986,
+            "lon": 2.8956
+        },
+        "name": "Perpignan",
+        "kind": "city"
+    },
+    {
+        "id": 175,
+        "coord": {
+            "lat": 48.8567,
+            "lon": 2.3508
+        },
+        "name": "Paris",
+        "kind": "city"
+    },
+    {
+        "id": 178,
+        "coord": {
+            "lat": 48.8567,
+            "lon": 2.3508
+        },
+        "name": "citron",
+        "kind": "city"
+    },
+    {
+        "id": 179,
+        "coord": {
+            "lat": 48.8567,
+            "lon": 2.3508
+        },
+        "name": "loutre",
+        "kind": "city"
+    },
+    {
+        "id": 204,
+        "coord": {
+            "lat": 42.6125,
+            "lon": 2.8092
+        },
+        "name": "Trouillas",
+        "kind": "city"
+    }
+]

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
+<Document>
+    <Placemark>
+      <name>teste</name>
+      <LookAt>
+        <longitude>-47.82056628282606</longitude>
+        <latitude>-15.78921645504241</latitude>
+        <altitude>0</altitude>
+        <heading>0</heading>
+        <tilt>0</tilt>
+        <range>668.1932383230591</range>
+      </LookAt>
+    </Placemark>
+</Document>
+</kml>

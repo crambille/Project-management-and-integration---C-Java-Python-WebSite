@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr">
+	<head>
+		<title>DCL</title>
+		<meta charset="UTF-8"/>
+		
+		<link href="css/bootstrap.min.css" rel="stylesheet"/>
+		<link href="css/css.css" rel="stylesheet"/>
+		
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+		<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+		<script src="javascript/notify.min.js"></script>
+		<script src="javascript/js.js"></script>
+	</head>
+	
+	<body onload="initialiser()">
+
+		<nav class="navbar navbar-default">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<a class="navbar-brand" href="#">DCL</a>
+				</div>
+				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+					<ul class="nav navbar-nav navbar-right">
+						<li><a href="#">V1.0</a></li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+		
+		<div class="row">
+			<div class="col-md-12" id="alert">
+
+			</div>
+		</div>	
+	
+		<!-- premier cadre liste des transport + google map -->
+		<div class="row">
+			<div class="col-md-12 gestion-transport">
+				
+				<!-- liste des transport -->
+				<div class="col-md-4">
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
+							Liste des transports
+						</div> 
+						<div class="panel-body panel-body-liste-transport">
+							<table class="table" id="table-transport">
+								<tr>
+									<th> ID</th>
+									<th> Status </th>
+									<th> Action </th>
+								</tr>
+							</table>
+						</div>
+					</div>
+				</div>
+				
+				<!-- google map -->
+				<div class="col-md-8">
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>
+							Google Map
+						</div>
+						<div class="panel-body panel-carte">
+							<!-- Affiche google map -->
+							<div id="carte" style="width:100%; height:100%"></div>
+							
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div><!-- fin du premier cadre -->
+		
+		<!-- cadre du bas -->
+		<div class="row">
+			<div class="col-md-12 gestion-POI">
+				
+				<!-- pannel location -->
+				<div class="col-md-4">
+					<div class="panel panel-default">
+						<div class="panel-heading">						
+							<span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
+							Liste des locations
+						</div> 
+						<div class="panel-body panel-body-liste-location">
+							<!-- Liste des POI -->
+							<table class="table" id="table-location">
+								<tr>
+									<th>Name</th>
+									<th>Kind</th>
+								</tr>
+							</table>
+						</div>
+						<div class="panel-footer">
+							<button type="button" class="btn btn-success glyphicon glyphicon-plus btn-add-location" data-toggle="modal" data-target="#Modal_add_location"></button>
+						</div>
+					</div>
+				</div>
+				
+				<!-- pannel add transport -->
+				<div class="col-md-8">
+					<div class="panel panel-default ">
+						<div class="panel-heading">
+							<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+							Nouveaux transport
+						</div> 
+						<div class="panel-body panel-nouveau-trajet ">
+							
+						</div>
+						<div class="panel-footer">
+							<button type="button" class="btn btn-success glyphicon glyphicon-ok" onclick='add_transport()'></button>
+							<button type="button" class="btn btn-danger glyphicon glyphicon-remove" onclick='clear_add_transport()'></button>
+							<div class="pull-right">
+								Algo
+								<select class="select-algo">
+									<option value="1">Aléatoire</option>
+									<option value="2">Alphabétique</option>
+									<option value="3">Le plus court</option>
+								</select>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div> <!-- fin du cadre du bas -->
+		
+		<!-- Modal d'ajout de location -->
+		<div class="modal fade" id="Modal_add_location" tabindex="-1" role="dialog" aria-labelledby="Modal_add_location">
+  			<div class="modal-dialog" role="document">
+   				<div class="modal-content">
+      				<div class="modal-header">
+        				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        				<h4 class="modal-title" id="exampleModalLabel">New Location</h4>
+      				</div>
+      				<div class="modal-body">
+        				<form>
+        					<div class="row">
+        						<div class="col-md-6">
+		          					<div class="form-group">
+		           						<label for="add-name-location" class="control-label">Name:</label>
+		            					<input type="text" class="form-control" id="add-name-location" readonly></input>
+		         					 </div>
+		         				</div>
+		         				<div class="col-md-6">
+		          					<div class="form-group">
+							            <label for="add-kind-location" class="control-label">Kind:</label>
+							            <input class="form-control" id="add-kind-location" readonly></input>
+		          					</div>
+		          				</div>
+		          			</div>
+
+          					<div class="row">
+          						<div class="col-md-6">
+		          					<div class="form-group">
+							            <label for="add-latitude-location" class="control-label">Coord Latitude:</label>
+							            <input class="form-control" id="add-latitude-location" readonly></input>
+							        </div>
+							    </div>
+							    <div class="col-md-6">
+							        <div class="form-group">
+							            <label for="add-longitude-location" class="control-label">Coord Longitude:</label>
+							            <input class="form-control" id="add-longitude-location" readonly></input>
+		          					</div>
+		          				</div>
+		          			</div>
+							
+							<div class="row">
+          						<div class="col-md-10 col-md-offset-1">
+		          					<div class="form-group">
+							            <div class="alert alert-info glyphicon glyphicon-info-sign" id="messageInfoMap" role="alert"> Cliquez sur la carte pour remplir les champs ci dessus.</div>
+							        </div>
+							    </div>
+		          			</div>
+        				
+        				<div class="row">
+	          				<div class="col-md-12">
+	          					<div class="carte-addLocation">
+	          						<div id="carte2" style="height:100%"></div>
+	          					</div>
+	          				</div>
+	          			</div>
+					</form>
+      				</div>
+      				<div class="modal-footer">
+				        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				        <button type="button" class="btn btn-success" onclick='add_location()'>Add location</button>
+      				</div>
+   				</div>
+  			</div>
+		</div>
+
+		<!-- Bootstrap JS -->
+    	<script src="javascript/bootstrap.min.js"></script>
+	</body>
+</html>

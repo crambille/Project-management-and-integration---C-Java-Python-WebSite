@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="https://www.opengis.net/kml/2.2">
+<Document>
+  <name>DCL</name>
+  <open>1</open>
+
+    <!-- Styles d'affichage -->
+    <!-- color format: aabbggrr -->
+    <Style id="beg"> 
+      <IconStyle>
+        <color>ff00ff00</color>
+        <colorMode>normal</colorMode>
+      </IconStyle>
+    </Style>
+    <Style id="mid">
+      <IconStyle>
+        <color>ffffffff</color>
+        <colorMode>normal</colorMode>
+      </IconStyle>
+    </Style>
+    <Style id="end">
+      <IconStyle>
+        <color>ff0000ff</color>
+        <colorMode>normal</colorMode>
+      </IconStyle>
+    </Style>
+    <Style id="route">
+      <LineStyle>
+        <color>ffffeedd</color>
+        <colorMode>normal</colorMode>
+        <width>4</width>
+      </LineStyle>
+    </Style>
+  
+  <!-- les Points d'intérêt géographiques -->
+  <Placemark>
+    <styleUrl>#mid</styleUrl>
+    <name>Perpignan</name>
+    <visibility>1</visibility> 
+    <Point>
+      <coordinates>2.8956,42.6986,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Rivesaltes</name>
+    <styleUrl>#beg</styleUrl>
+    <visibility>1</visibility> 
+    <Point>
+      <coordinates>2.8747,42.7697,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <styleUrl>#end</styleUrl>
+    <name>Trouillas</name>
+    <visibility>1</visibility> 
+    <Point>
+      <coordinates>2.8092,42.6125,0</coordinates>
+    </Point>
+  </Placemark>
+
+  <!-- Le tracé de livraison -->
+  <Placemark>
+    <name>Route</name>
+    <styleUrl>#route</styleUrl>
+    <LineString>
+      <extrude>1</extrude>
+      <tessellate>1</tessellate>
+      <coordinates>2.8747,42.7697,
+                   32.8956,42.6986,
+                   25.8092,2.6125,
+		   48.1236,6.2654,
+                   45.3256,30.1256
+      </coordinates>
+    </LineString>
+  </Placemark>
+</Document>
+</kml>
